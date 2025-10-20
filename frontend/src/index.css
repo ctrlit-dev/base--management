@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@import "./styles/utilities.css";
+
+/* LCREE Designsystem - Elegant Tech Luxury */
+:root {
+  /* Light Mode Colors */
+  --color-background-primary: #F9FAFB;
+  --color-background-secondary: #FFFFFF;
+  --color-background-tertiary: #F3F4F6;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-tertiary: #6B7280;
+  --color-icon-primary: #6B7280;
+  --color-border-primary: #E5E7EB;
+  --color-border-secondary: #D1D5DB;
+  --color-accent-blue: #3B82F6;
+  --color-accent-violet: #8B5CF6;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-glow: rgba(59, 130, 246, 0.15);
+}
+
+.dark {
+  /* Dark Mode Colors */
+  --color-background-primary: #0B0C10;
+  --color-background-secondary: #121418;
+  --color-background-tertiary: #1F2937;
+  --color-text-primary: #EAEAEA;
+  --color-text-secondary: #9CA3AF;
+  --color-text-tertiary: #6B7280;
+  --color-icon-primary: #6B7280;
+  --color-border-primary: #1F2937;
+  --color-border-secondary: #374151;
+  --color-accent-blue: #3B82F6;
+  --color-accent-violet: #8B5CF6;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-glow: rgba(59, 130, 246, 0.25);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border-primary);
+  }
+
+  body {
+    background-color: var(--color-background-primary);
+    color: var(--color-text-primary);
+    font-family: 'Inter', 'Manrope', system-ui, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Card Component */
+  .card {
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px var(--color-shadow);
+    transition: all 300ms ease-in-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 12px var(--color-shadow);
+  }
+
+  /* Input Component */
+  .input {
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--color-text-primary);
+    font-size: 14px;
+    transition: all 300ms ease-in-out;
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: var(--color-accent-blue);
+    box-shadow: 0 0 0 3px var(--color-shadow-glow);
+  }
+
+  .input::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  /* Button Component */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-violet));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--color-shadow-glow);
+  }
+
+  .btn-danger {
+    background: linear-gradient(135deg, var(--color-error), #DC2626);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+  }
+
+  .btn-danger:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: var(--color-background-tertiary);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-secondary);
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-accent-blue);
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism effect */
+  .glass {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Glow effect on hover */
+  .glow-on-hover {
+    transition: box-shadow 300ms ease-in-out;
+  }
+
+  .glow-on-hover:hover {
+    box-shadow: 0 0 20px var(--color-shadow-glow);
+  }
+
+  /* Active tab icon glow */
+  .active-icon-glow {
+    filter: drop-shadow(0 0 12px var(--color-accent-blue)) drop-shadow(0 0 24px var(--color-accent-blue));
+    transition: filter 300ms ease-in-out;
+  }
+
+  /* Sidebar navigation icons */
+  .sidebar-nav-icon {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+  }
+
+  .sidebar-nav-icon.collapsed {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+  }
+
+  /* Theme transition */
+  .theme-transition {
+    transition: background-color 300ms ease-in-out, 
+                color 300ms ease-in-out, 
+                border-color 300ms ease-in-out,
+                box-shadow 300ms ease-in-out;
+  }
+
+  /* Input icon styles - prevent color changes */
+  .input-icon {
+    color: #4B5563 !important;  /* Dunkleres Grau für bessere Sichtbarkeit */
+    fill: currentColor !important;
+    stroke-width: 1.5 !important;  /* Dickere Linien für bessere Sichtbarkeit */
+  }
+
+  .dark .input-icon {
+    color: #D1D5DB !important;  /* Helleres Grau für Dark Mode */
+  }
+
+  /* Checkbox Focus Styling entfernen */
+  input[type="checkbox"]:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: inherit !important;
+  }
+
+  input[type="checkbox"]:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Ensure background covers full document height */
+  html, body {
+    height: 100%;
+  }
+  
+  body {
+    min-height: 100vh;
+  }
+}

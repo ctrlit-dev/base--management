@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p src/api src/hooks src/store src/components src/pages src/routes src/utils src/types)",
+      "Bash(npm install zustand react-router-dom axios zod react-hot-toast @headlessui/react @heroicons/react framer-motion date-fns)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

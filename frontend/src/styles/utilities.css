@@ -1,0 +1,719 @@
+/**
+ * Utility Classes für DRY-Styling
+ * ================================
+ * 
+ * Zentrale Utility-Klassen für häufige Styling-Patterns.
+ * Verhindert Code-Duplikation und sorgt für Konsistenz.
+ * 
+ * Tailwind CSS v4 kompatible Syntax
+ */
+
+/* Background Utilities */
+.bg-card {
+  background-color: white;
+}
+
+.dark .bg-card {
+  background-color: rgb(31 41 55);
+}
+
+.bg-card-secondary {
+  background-color: rgb(249 250 251);
+}
+
+.dark .bg-card-secondary {
+  background-color: rgb(55 65 81);
+}
+
+.bg-card-tertiary {
+  background-color: rgb(243 244 246);
+}
+
+.dark .bg-card-tertiary {
+  background-color: rgb(75 85 99);
+}
+
+/* Text Utilities */
+.text-primary {
+  color: rgb(17 24 39);
+}
+
+.dark .text-primary {
+  color: white;
+}
+
+.text-secondary {
+  color: rgb(75 85 99);
+}
+
+.dark .text-secondary {
+  color: rgb(209 213 219);
+}
+
+.text-tertiary {
+  color: rgb(107 114 128);
+}
+
+.dark .text-tertiary {
+  color: rgb(156 163 175);
+}
+
+/* Border Utilities */
+.border-card {
+  border: 1px solid rgb(229 231 235);
+}
+
+.dark .border-card {
+  border: 1px solid rgb(55 65 81);
+}
+
+.border-card-secondary {
+  border: 1px solid rgb(209 213 219);
+}
+
+.dark .border-card-secondary {
+  border: 1px solid rgb(75 85 99);
+}
+
+/* Button Utilities */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  background-color: rgb(37 99 235);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: rgb(29 78 216);
+}
+
+.btn-primary:focus {
+  outline: 2px solid rgb(59 130 246);
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  background-color: rgb(243 244 246);
+  color: rgb(55 65 81);
+}
+
+.dark .btn-secondary {
+  background-color: rgb(55 65 81);
+  color: rgb(209 213 219);
+}
+
+.btn-secondary:hover {
+  background-color: rgb(229 231 235);
+}
+
+.dark .btn-secondary:hover {
+  background-color: rgb(75 85 99);
+}
+
+.btn-secondary:focus {
+  outline: 2px solid rgb(107 114 128);
+  outline-offset: 2px;
+}
+
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  background-color: rgb(220 38 38);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: rgb(185 28 28);
+}
+
+.btn-danger:focus {
+  outline: 2px solid rgb(239 68 68);
+  outline-offset: 2px;
+}
+
+.btn-success {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  background-color: rgb(34 197 94);
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: rgb(21 128 61);
+}
+
+.btn-success:focus {
+  outline: 2px solid rgb(34 197 94);
+  outline-offset: 2px;
+}
+
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+/* Form Utilities */
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid rgb(209 213 219);
+  border-radius: 0.375rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  background-color: white;
+  color: rgb(17 24 39);
+}
+
+.dark .form-input {
+  background-color: rgb(31 41 55);
+  border-color: rgb(75 85 99);
+  color: white;
+}
+
+.form-input:focus {
+  outline: 2px solid rgb(59 130 246);
+  outline-offset: 2px;
+  border-color: rgb(59 130 246);
+}
+
+.form-input::placeholder {
+  color: rgb(107 114 128);
+}
+
+.dark .form-input::placeholder {
+  color: rgb(156 163 175);
+}
+
+.form-input-error {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid rgb(239 68 68);
+  border-radius: 0.375rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.form-input-error:focus {
+  outline: 2px solid rgb(239 68 68);
+  outline-offset: 2px;
+  border-color: rgb(239 68 68);
+}
+
+.form-input-success {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid rgb(34 197 94);
+  border-radius: 0.375rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.form-input-success:focus {
+  outline: 2px solid rgb(34 197 94);
+  outline-offset: 2px;
+  border-color: rgb(34 197 94);
+}
+
+/* Card Utilities */
+.card-base {
+  background-color: white;
+  border: 1px solid rgb(229 231 235);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.dark .card-base {
+  background-color: rgb(31 41 55);
+  border-color: rgb(55 65 81);
+}
+
+.card-hover {
+  background-color: white;
+  border: 1px solid rgb(229 231 235);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.dark .card-hover {
+  background-color: rgb(31 41 55);
+  border-color: rgb(55 65 81);
+}
+
+.card-hover:hover {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.card-padding-sm {
+  padding: 1rem;
+}
+
+.card-padding-md {
+  padding: 1.5rem;
+}
+
+.card-padding-lg {
+  padding: 2rem;
+}
+
+/* Layout Utilities */
+.container-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-padding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-padding {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section-spacing {
+  margin-bottom: 2rem;
+}
+
+.section-spacing-lg {
+  margin-bottom: 4rem;
+}
+
+/* Animation Utilities */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-in-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Focus Utilities */
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-ring:focus {
+  outline: 2px solid rgb(59 130 246);
+  outline-offset: 2px;
+}
+
+.focus-ring-danger {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-ring-danger:focus {
+  outline: 2px solid rgb(239 68 68);
+  outline-offset: 2px;
+}
+
+/* Hover Utilities */
+.hover-lift {
+  transition-property: transform, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.hover-lift:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.hover-scale {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* State Utilities */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+/* Spacing Utilities */
+.space-y-section > * + * {
+  margin-top: 1.5rem;
+}
+
+.space-y-section-lg > * + * {
+  margin-top: 2rem;
+}
+
+/* Flexbox Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Grid Utilities */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.grid-responsive-2 {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-responsive-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.grid-responsive-4 {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-responsive-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Toggle Button Utilities */
+.toggle-base {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.toggle-sm {
+  height: 1.5rem;
+  width: 2.75rem;
+}
+
+.toggle-md {
+  height: 2rem;
+  width: 3.5rem;
+}
+
+.toggle-lg {
+  height: 2.5rem;
+  width: 4.5rem;
+}
+
+.toggle-active {
+  background-color: rgb(34 197 94);
+}
+
+.toggle-inactive {
+  background-color: rgb(209 213 219);
+}
+
+.dark .toggle-inactive {
+  background-color: rgb(75 85 99);
+}
+
+.toggle-knob {
+  display: inline-block;
+  transform: translateX(0);
+  border-radius: 9999px;
+  background-color: white;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.toggle-knob-sm {
+  height: 1rem;
+  width: 1rem;
+}
+
+.toggle-knob-md {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.toggle-knob-lg {
+  height: 2rem;
+  width: 2rem;
+}
+
+/* Session Button Utilities */
+.session-button-orange {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgb(249 115 22 / 0.1);
+  color: rgb(249 115 22);
+  border-radius: 0.75rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  font-weight: 500;
+}
+
+.session-button-orange:hover {
+  background-color: rgb(249 115 22 / 0.2);
+}
+
+.session-button-red {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgb(239 68 68 / 0.1);
+  color: rgb(239 68 68);
+  border-radius: 0.75rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  font-weight: 500;
+}
+
+.session-button-red:hover {
+  background-color: rgb(239 68 68 / 0.2);
+}
+
+/* Secondary Button Utilities */
+.btn-secondary-outline {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgb(209 213 219);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  color: rgb(55 65 81);
+  background-color: white;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.btn-secondary-outline:hover {
+  background-color: rgb(249 250 251);
+}
+
+.btn-secondary-outline:focus {
+  outline: 2px solid rgb(59 130 246);
+  outline-offset: 2px;
+}
+
+/* Passkey Button Utilities */
+.btn-passkey-primary {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background-color: rgb(59 130 246);
+  color: white;
+  border-radius: 0.5rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.btn-passkey-primary:hover {
+  background-color: rgb(37 99 235);
+}
+
+.btn-passkey-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-passkey-cancel {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background-color: rgb(107 114 128);
+  color: white;
+  border-radius: 0.5rem;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.btn-passkey-cancel:hover {
+  background-color: rgb(75 85 99);
+}
+
+/* Toast Utilities */
+.toast-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 50;
+}
+
+.toast-slide-in {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+.toast-slide-out {
+  animation: slideOutToRight 0.3s ease-in;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}

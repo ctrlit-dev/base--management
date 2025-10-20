@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 320 155">
+  <defs>
+    <style>
+      .h {
+        fill: url(#c);
+      }
+
+      .i {
+        fill: url(#d);
+      }
+
+      .j {
+        mix-blend-mode: multiply;
+        opacity: .4;
+      }
+
+      .k {
+        isolation: isolate;
+      }
+
+      .l {
+        fill: url(#e);
+      }
+
+      .m {
+        fill: url(#f);
+      }
+
+      .n {
+        fill: url(#b);
+      }
+    </style>
+    <linearGradient id="b" data-name="Degradado sin nombre 928" x1="34.78" y1="4749.1" x2="117.21" y2="4666.67" gradientTransform="translate(0 4806.37) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3597ff"/>
+      <stop offset=".58" stop-color="#4c53de"/>
+      <stop offset=".73" stop-color="#4d4dda"/>
+      <stop offset=".9" stop-color="#513fd1"/>
+      <stop offset="1" stop-color="#5434ca"/>
+    </linearGradient>
+    <linearGradient id="c" data-name="Degradado sin nombre 927" x1="61.06" y1="4749.04" x2="117.06" y2="4805.03" gradientTransform="translate(0 4806.37) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2b55e3"/>
+      <stop offset=".27" stop-color="#247aff"/>
+      <stop offset="1" stop-color="#46edff"/>
+    </linearGradient>
+    <linearGradient id="d" data-name="Degradado sin nombre 926" x1="117.06" y1="113.41" x2="229.16" y2="1.32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6418b0"/>
+      <stop offset="0" stop-color="#6619b3"/>
+      <stop offset=".08" stop-color="#7929ce"/>
+      <stop offset=".16" stop-color="#8836e4"/>
+      <stop offset=".25" stop-color="#923ff3"/>
+      <stop offset=".35" stop-color="#9944fc"/>
+      <stop offset=".5" stop-color="#9b46ff"/>
+      <stop offset="1" stop-color="#b880ff"/>
+    </linearGradient>
+    <linearGradient id="e" data-name="Degradado sin nombre 925" x1="229.16" y1="27.66" x2="285.31" y2="83.81" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8127ff"/>
+      <stop offset=".43" stop-color="#bd37ff"/>
+      <stop offset=".63" stop-color="#cc39ff"/>
+      <stop offset="1" stop-color="#f441ff"/>
+    </linearGradient>
+    <linearGradient id="f" data-name="Degradado sin nombre 924" x1="-7785.48" y1="139.73" x2="-7841.48" y2="83.73" gradientTransform="translate(-7582.52 .08) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffa9ff"/>
+      <stop offset=".28" stop-color="#f6f"/>
+      <stop offset=".48" stop-color="#ff3cff"/>
+      <stop offset=".58" stop-color="#ff2dff"/>
+      <stop offset=".68" stop-color="#f828f9"/>
+      <stop offset=".81" stop-color="#e71bea"/>
+      <stop offset=".96" stop-color="#cb06d1"/>
+      <stop offset="1" stop-color="#c300ca"/>
+    </linearGradient>
+    <image id="g" width="126" height="99" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH4AAABjCAYAAABda7TNAAAACXBIWXMAAAsSAAALEgHS3X78AAAAR0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcGw0sAAXbKOeEAAAAASUVORK5CYII="/>
+  </defs>
+  <g class="k">
+    <g id="a" data-name="Ebene_1">
+      <g>
+        <g>
+          <polygon class="n" points="77.63 126.59 21.55 70.5 48.02 44.03 130.32 126.59 77.63 126.59"/>
+          <image class="j" width="152" height="125" transform="translate(0 30)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJgAAAB9CAYAAABeS6oQAAAACXBIWXMAAAsSAAALEgHS3X78AAAAYElEQVR4nO3BMQEAAADCoPVP7W0HoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAMylsAAF/t+ojAAAAAElFTkSuQmCC"/>
+        </g>
+        <g>
+          <polygon class="h" points="47.93 44.12 77.54 14.51 130.23 14.51 74.23 70.5 47.93 44.12"/>
+          <use class="j" transform="translate(26)" xlink:href="#g"/>
+        </g>
+        <g>
+          <polygon class="i" points="189.71 14.56 189.66 14.47 103.93 100.2 130.23 126.59 242.33 14.49 189.71 14.56"/>
+          <image class="j" width="182" height="155" transform="translate(82)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALYAAACbCAYAAADPwmHsAAAACXBIWXMAAAsSAAALEgHS3X78AAAAg0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBquXIAASqvvAAAAAAASUVORK5CYII="/>
+        </g>
+        <g>
+          <polygon class="l" points="298.55 70.57 242.46 14.49 242.33 14.49 216.01 40.81 272.07 97.04 298.55 70.57"/>
+          <image class="j" width="125" height="126" transform="translate(195)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAB+CAYAAAAJFB6LAAAACXBIWXMAAAsSAAALEgHS3X78AAAAVElEQVR4nO3BAQ0AAADCoPdPbQ43oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACeDPaWAAFeXUSgAAAAAElFTkSuQmCC"/>
+        </g>
+        <g>
+          <polygon class="m" points="272.1 97.02 242.48 126.63 189.79 126.63 245.79 70.64 272.1 97.02"/>
+          <use class="j" transform="translate(168 56)" xlink:href="#g"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

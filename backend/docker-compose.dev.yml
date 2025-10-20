@@ -1,0 +1,62 @@
+# Docker Compose für LCREE Backend Entwicklung
+# ===========================================
+# Startet PostgreSQL-Datenbank für lokale Entwicklung
+# 
+# Verwendung:
+#   docker-compose -f docker-compose.dev.yml up -d
+#   docker-compose -f docker-compose.dev.yml down
+
+version: '3.8'
+
+services:
+  # PostgreSQL Datenbank für LCREE Backend
+  postgres:
+    image: postgres:15-alpine
+    container_name: lcree-postgres
+    environment:
+      POSTGRES_DB: lcree
+      POSTGRES_USER: lcree
+      POSTGRES_PASSWORD: lcree123
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=de_DE.UTF-8 --lc-ctype=de_DE.UTF-8"
+    ports:
+      - "5432:5432"
+    volumes:
+      # Persistente Datenbank-Daten
+      - postgres_data:/var/lib/postgresql/data
+      # Initialisierungs-Skripte (optional)
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+    networks:
+      - lcree-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lcree -d lcree"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis für Caching und Sessions (optional)
+  redis:
+    image: redis:7-alpine
+    container_name: lcree-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - lcree-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  lcree-network:
+    driver: bridge
