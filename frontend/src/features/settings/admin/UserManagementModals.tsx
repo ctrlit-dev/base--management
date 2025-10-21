@@ -20,7 +20,7 @@ import {
   CheckCircleIcon,
   XCircleIcon,
 } from '@heroicons/react/24/outline';
-import { CreateUserData, UpdateUserData } from '../../../lib/api/userManagement';
+import type { UserCreateData, UserUpdateData } from '../../../types/user';
 import { User } from '../../../lib/api/auth';
 import { ROLE_CONFIG } from '../../../lib/constants/roles';
 import { 
@@ -32,7 +32,6 @@ import {
   AdminCheckboxField
 } from './AdminModalComponents';
 // import { validateCreateUser, validateUpdateUser } from '../../utils/adminValidation';
-
 
 // AddUserModal
 export const AddUserModal: React.FC<{
@@ -616,4 +615,25 @@ export const DeleteUserModal: React.FC<{
       </div>
     </AdminModalBackdrop>
   );
+};
+
+// Validierungsfunktionen
+const validateCreateUser = (data: UserCreateData): Record<string, string> => {
+  const errors: Record<string, string> = {};
+  
+  if (!data.email) errors.email = 'E-Mail ist erforderlich';
+  if (!data.first_name) errors.first_name = 'Vorname ist erforderlich';
+  if (!data.last_name) errors.last_name = 'Nachname ist erforderlich';
+  if (!data.password) errors.password = 'Passwort ist erforderlich';
+  if (data.password !== data.password_confirm) errors.password_confirm = 'Passwörter stimmen nicht überein';
+  
+  return errors;
+};
+
+const validateUpdateUser = (data: UserUpdateData): Record<string, string> => {
+  const errors: Record<string, string> = {};
+  
+  if (data.email && !data.email.includes('@')) errors.email = 'Ungültige E-Mail-Adresse';
+  
+  return errors;
 };

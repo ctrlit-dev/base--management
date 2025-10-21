@@ -14,7 +14,7 @@
  */
 
 import { BaseApiClient, type ApiResponse } from './baseClient';
-import type { User, UserFilters } from '../types/user';
+import type { User, UserFilters, UserCreateData, UserUpdateData } from '../types/user';
 
 // Erweiterte Typen für Benutzerverwaltung (API-spezifisch)
 export interface UserListResponse {

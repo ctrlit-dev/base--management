@@ -29,7 +29,7 @@ import {
   UserIcon,
 } from '@heroicons/react/24/outline';
 import { userManagementApi } from '../../../lib/api/userManagement';
-import type { UserFilters, CreateUserData, UpdateUserData } from '../../../lib/api/userManagement';
+import type { UserFilters, UserCreateData, UserUpdateData } from '../../../types/user';
 import type { User } from '../../../lib/api/auth';
 import { AddUserModal, EditUserModal, DeleteUserModal } from './UserManagementModals';
 import { ROLE_CONFIG } from '../../../lib/constants/roles';
