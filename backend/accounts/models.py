@@ -48,7 +48,7 @@ class UserManager(BaseUserManager):
         """
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-        extra_fields.setdefault('role', UserRole.ADMIN)
+        extra_fields.setdefault('role', UserRole.SUPER_ADMIN)
         
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser muss is_staff=True haben.')
@@ -60,19 +60,19 @@ class UserManager(BaseUserManager):
 
 class UserRole(models.TextChoices):
     """
-    Benutzerrollen im LCREE-System
+    Allgemeine Benutzerrollen für das Benutzer-Management-System
     
-    ADMIN: Vollzugriff auf alle Funktionen
-    PRODUCTION: Produktion und Verkauf
-    WAREHOUSE: Wareneingang und Materialverwaltung
-    SALES: Verkauf und Kundenbetreuung
-    VIEWER: Nur Lesezugriff
+    SUPER_ADMIN: Vollzugriff auf alle Systemfunktionen
+    ADMIN: Benutzer- und Systemverwaltung
+    MANAGER: Team- und Projektverwaltung
+    USER: Standard-Benutzer mit grundlegenden Funktionen
+    GUEST: Gast mit nur Lesezugriff
     """
+    SUPER_ADMIN = 'SUPER_ADMIN', 'Super-Administrator'
     ADMIN = 'ADMIN', 'Administrator'
-    PRODUCTION = 'PRODUCTION', 'Produktion'
-    WAREHOUSE = 'WAREHOUSE', 'Lager'
-    SALES = 'SALES', 'Verkauf'
-    VIEWER = 'VIEWER', 'Betrachter'
+    MANAGER = 'MANAGER', 'Manager'
+    USER = 'USER', 'Benutzer'
+    GUEST = 'GUEST', 'Gast'
 
 
 class User(AbstractUser):
@@ -100,7 +100,7 @@ class User(AbstractUser):
     role = models.CharField(
         max_length=20,
         choices=UserRole.choices,
-        default=UserRole.VIEWER,
+        default=UserRole.USER,
         verbose_name="Benutzerrolle",
         help_text="Rolle bestimmt die verfügbaren Funktionen im System"
     )

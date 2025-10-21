@@ -9,10 +9,10 @@ import {
   UserIcon
 } from '@heroicons/react/24/outline';
 import { BackgroundRenderer } from '../components/BackgroundRenderer';
-import { SettingsSidebar } from '../components/SettingsSidebar';
-import { SettingsButton } from '../components/SettingsButton';
-import { FloatingLabel } from '../components/FloatingLabel';
-import { authApi } from '../api/auth';
+import { SettingsSidebar } from '../components/forms/SettingsSidebar';
+import { SettingsButton } from '../components/ui/buttons/SettingsButton';
+import { FloatingLabel } from '../components/ui/inputs/FloatingLabel';
+import { authApi } from '../lib/api/auth';
 import { useBackgroundStore } from '../store/backgroundStore';
 
 interface ForgotPasswordFormData {

@@ -14,9 +14,9 @@
  * - Retry Logic
  */
 
-import { authApi, type ApiResponse, type User } from '../api/auth';
+import { authApi, type ApiResponse, type User } from '../lib/api/auth';
 import { handleApiError, logError, retryApiCall } from '../utils/errorHandling';
-import type { Session } from '../api/auth';
+import type { Session } from '../lib/api/auth';
 
 // Base Service Class
 abstract class BaseService {
@@ -352,7 +352,7 @@ export class SettingsService extends BaseService {
         console.log('SettingsService: Lade Einstellungen...');
         
         // Token automatisch aktualisieren falls nötig
-        const { extendedTokenManager } = await import('../api/auth');
+        const { extendedTokenManager } = await import('../lib/api/auth');
         await extendedTokenManager.refreshTokenIfNeeded();
         
         const { accessToken } = extendedTokenManager.getTokens();
@@ -425,7 +425,7 @@ export class SettingsService extends BaseService {
         console.log('SettingsService: Aktualisiere Einstellungen...', settingsData);
         
         // Token automatisch aktualisieren falls nötig
-        const { extendedTokenManager } = await import('../api/auth');
+        const { extendedTokenManager } = await import('../lib/api/auth');
         await extendedTokenManager.refreshTokenIfNeeded();
         
         const { accessToken } = extendedTokenManager.getTokens();

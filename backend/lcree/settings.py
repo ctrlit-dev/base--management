@@ -42,12 +42,9 @@ env = environ.Env(
     
     # Passkeys/WebAuthn
     WEBAUTHN_RP_ID=(str, 'localhost'),
-    WEBAUTHN_RP_NAME=(str, 'LCREE Backend'),
+    WEBAUTHN_RP_NAME=(str, 'User Management Backend'),
     WEBAUTHN_ORIGIN=(str, 'http://localhost:8000'),
     
-    # External Services
-    QR_BASE_URL=(str, 'https://lcree.example.com'),
-    PRINT_AGENT_URL=(str, 'http://localhost:5000'),
     
     # Email (optional)
     EMAIL_HOST=(str, ''),
@@ -89,13 +86,6 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'accounts',
-    'fragrances',
-    'materials',
-    'containers',
-    'orders',
-    'production',
-    'ratings',
-    'tools',
     'audit',
     'settingsapp',
     'dashboard',
@@ -271,15 +261,12 @@ WEBAUTHN_RP_ID = env('WEBAUTHN_RP_ID')
 WEBAUTHN_RP_NAME = env('WEBAUTHN_RP_NAME')
 WEBAUTHN_ORIGIN = env('WEBAUTHN_ORIGIN')
 
-# External Services
-QR_BASE_URL = env('QR_BASE_URL')
-PRINT_AGENT_URL = env('PRINT_AGENT_URL')
 
 # Email Configuration
 if DEBUG:
     # Development: E-Mails in Console ausgeben
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'noreply@lcree.local'
+    DEFAULT_FROM_EMAIL = 'noreply@usermanagement.local'
 else:
     # Production: SMTP
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -292,8 +279,8 @@ else:
 
 # OpenAPI/Spectacular Settings
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'LCREE Backend API',
-    'DESCRIPTION': 'Vollständiges Backend für das LCREE Duft- und Produktionssystem',
+    'TITLE': 'User Management Backend API',
+    'DESCRIPTION': 'Vollständiges Backend für das User Management System',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'COMPONENT_SPLIT_REQUEST': True,

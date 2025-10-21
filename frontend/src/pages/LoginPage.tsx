@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { LoginForm } from '../components/LoginForm';
-import { authApi } from '../api/auth';
-import { LoginFormData } from '../components/LoginForm';
+import { LoginForm } from '../features/auth/LoginForm';
+import { authApi } from '../lib/api/auth';
+import { LoginFormData } from '../features/auth/LoginForm';
 
 export function LoginPage() {
   const navigate = useNavigate();

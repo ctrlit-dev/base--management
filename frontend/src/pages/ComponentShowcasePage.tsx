@@ -30,8 +30,8 @@ import {
   WrenchScrewdriverIcon,
   SparklesIcon
 } from '@heroicons/react/24/outline';
-import { TopNavigation } from '../components/TopNavigation';
-import { SettingsSidebar } from '../components/SettingsSidebar';
+import { TopNavigation } from '../components/common/TopNavigation';
+import { SettingsSidebar } from '../components/forms/SettingsSidebar';
 import { BackgroundRenderer } from '../components/BackgroundRenderer';
 import { DeveloperButton } from '../components/DeveloperButton';
 import { 
@@ -45,7 +45,7 @@ import {
   WarningButton,
   IconButton,
   ButtonGroup 
-} from '../components/buttons/ButtonComponents';
+} from '../components/ui/buttons/ButtonComponents';
 import { 
   BaseInput, 
   PasswordInput, 
@@ -61,7 +61,7 @@ import {
   FeatureCard, 
   ListCard, 
   GridCardContainer 
-} from '../components/cards/CardComponents';
+} from '../components/ui/cards/CardComponents';
 import { useThemeStore } from '../store/themeStore';
 import { useBackgroundStore } from '../store/backgroundStore';
 import { useNavigationStore } from '../store/navigationStore';

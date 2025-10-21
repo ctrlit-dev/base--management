@@ -1,9 +1,29 @@
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { BackgroundType } from '../store/backgroundStore';
 
 interface BackgroundProps {
   type: BackgroundType;
 }
+
+// Pre-generierte Partikel-Positionen für bessere Performance
+const generateParticleData = (count: number) => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    duration: Math.random() * 10 + 10,
+    delay: Math.random() * 10,
+  }));
+};
+
+const DEFAULT_PARTICLES = generateParticleData(15);
+const COSMIC_STARS = generateParticleData(50);
+const GEOMETRIC_SHAPES = generateParticleData(20);
+const PARTICLE_COUNT = generateParticleData(100).map(particle => ({
+  ...particle,
+  xOffset: Math.random() * 100 - 50,
+}));
 
 export function BackgroundRenderer({ type }: BackgroundProps) {
   switch (type) {
@@ -61,13 +81,13 @@ function DefaultBackground() {
       />
 
       {/* Floating Particles */}
-      {[...Array(15)].map((_, i) => (
+      {DEFAULT_PARTICLES.map((particle) => (
         <motion.div
-          key={i}
+          key={particle.id}
           className="absolute w-2 h-2 bg-blue-400/30 dark:bg-blue-300/30 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${particle.left}%`,
+            top: `${particle.top}%`,
           }}
           animate={{
             y: [0, -100, 0],
@@ -75,9 +95,9 @@ function DefaultBackground() {
             scale: [0, 1, 0]
           }}
           transition={{
-            duration: Math.random() * 10 + 10,
+            duration: particle.duration,
             repeat: Infinity,
-            delay: Math.random() * 10,
+            delay: particle.delay,
             ease: "easeInOut"
           }}
         />
@@ -101,22 +121,22 @@ function CosmicBackground() {
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-indigo-900 to-black" />
       
       {/* Stars */}
-      {[...Array(50)].map((_, i) => (
+      {COSMIC_STARS.map((star) => (
         <motion.div
-          key={i}
+          key={star.id}
           className="absolute w-1 h-1 bg-white rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${star.left}%`,
+            top: `${star.top}%`,
           }}
           animate={{
             opacity: [0, 1, 0],
             scale: [0, 1, 0]
           }}
           transition={{
-            duration: Math.random() * 3 + 2,
+            duration: star.duration,
             repeat: Infinity,
-            delay: Math.random() * 5,
+            delay: star.delay,
             ease: "easeInOut"
           }}
         />
@@ -178,24 +198,24 @@ function ParticlesBackground() {
       <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900 dark:to-red-900" />
       
       {/* Many particles */}
-      {[...Array(100)].map((_, i) => (
+      {PARTICLE_COUNT.map((particle) => (
         <motion.div
-          key={i}
+          key={particle.id}
           className="absolute w-1 h-1 bg-orange-400/40 dark:bg-orange-300/40 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${particle.left}%`,
+            top: `${particle.top}%`,
           }}
           animate={{
             y: [0, -200, 0],
-            x: [0, Math.random() * 100 - 50, 0],
+            x: [0, particle.xOffset, 0],
             opacity: [0, 1, 0],
             scale: [0, 1, 0]
           }}
           transition={{
-            duration: Math.random() * 8 + 5,
+            duration: particle.duration,
             repeat: Infinity,
-            delay: Math.random() * 10,
+            delay: particle.delay,
             ease: "easeInOut"
           }}
         />

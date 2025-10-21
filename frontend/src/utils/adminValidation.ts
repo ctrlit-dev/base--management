@@ -82,7 +82,7 @@ export const validateLastName = (lastName: string): string | null => {
 
 // Rolle-Validierung - zentrale Funktion für alle Admin-Formulare
 export const validateRole = (role: string): string | null => {
-  const validRoles = ['ADMIN', 'PRODUCTION', 'WAREHOUSE', 'SALES', 'VIEWER'];
+  const validRoles = ['SUPER_ADMIN', 'ADMIN', 'MANAGER', 'USER', 'GUEST'];
   
   if (!role) {
     return 'Rolle ist erforderlich';

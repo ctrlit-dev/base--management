@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { TopNavigation } from '../components/TopNavigation';
-import { SettingsSidebar } from '../components/SettingsSidebar';
+import { TopNavigation } from '../components/common/TopNavigation';
+import { SettingsSidebar } from '../components/forms/SettingsSidebar';
 import { BackgroundRenderer } from '../components/BackgroundRenderer';
 import { DeveloperButton } from '../components/DeveloperButton';
 import { CodeBracketIcon } from '@heroicons/react/24/outline';
@@ -150,32 +150,3 @@ export function ExamplePage() {
   );
 }
 
-// Beispiel für eine Seite ohne Developer Menu
-export function ProductionPage() {
-  return (
-    <TemplatePage 
-      title="Produktions Seite" 
-      subtitle="Eine Seite ohne Developer Menu"
-      showDevMenu={false}
-    >
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-          Produktions-Inhalt
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
-          Diese Seite zeigt, wie das Template ohne Developer Menu verwendet wird.
-        </p>
-        <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-          <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
-            Hinweise:
-          </h3>
-          <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-            <li>• Developer Menu ist deaktiviert</li>
-            <li>• Alle anderen Funktionen bleiben verfügbar</li>
-            <li>• Perfekt für Produktions-Seiten</li>
-          </ul>
-        </div>
-      </div>
-    </TemplatePage>
-  );
-}

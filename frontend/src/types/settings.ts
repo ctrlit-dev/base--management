@@ -20,17 +20,6 @@ export interface SystemSettings {
   // Firmen-Einstellungen
   company_name: string;
   currency: 'EUR' | 'USD' | 'GBP' | 'CHF';
-  qr_base_url: string;
-  print_agent_url: string;
-  
-  // Produktions-Einstellungen
-  default_loss_factor_oil_percent: number;
-  require_second_batch_scan_on_insufficient: boolean;
-  show_older_batch_warning: boolean;
-  
-  // Analytics & Scraper
-  analytics_defaults: Record<string, any>;
-  scraper_settings: Record<string, any>;
   
   // NEUE ADMIN-FUNKTIONEN (nur Frontend)
   // Wartungsmodus
@@ -79,7 +68,7 @@ export interface SystemSettings {
   
   // Benutzer-Management
   user_registration_approval_required: boolean;
-  default_user_role: 'ADMIN' | 'PRODUCTION' | 'WAREHOUSE' | 'SALES' | 'VIEWER';
+  default_user_role: 'SUPER_ADMIN' | 'ADMIN' | 'MANAGER' | 'USER' | 'GUEST';
   user_session_timeout_minutes: number;
   allow_multiple_sessions: boolean;
   force_password_change_on_first_login: boolean;
@@ -95,13 +84,10 @@ export interface SystemSettings {
 export interface SettingsValidationErrors {
   company_name?: string;
   currency?: string;
-  qr_base_url?: string;
-  print_agent_url?: string;
   password_reset_token_expiry_hours?: string;
-  default_loss_factor_oil_percent?: string;
 }
 
-export type SettingsTab = 'authentication' | 'company' | 'production' | 'system' | 'security' | 'notifications' | 'backup' | 'users' | 'privacy' | 'logs' | 'analytics';
+export type SettingsTab = 'authentication' | 'company' | 'system' | 'security' | 'notifications' | 'backup' | 'users' | 'privacy' | 'logs';
 
 export interface SettingsTabConfig {
   id: SettingsTab;

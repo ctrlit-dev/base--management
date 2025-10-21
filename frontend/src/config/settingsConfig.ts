@@ -41,11 +41,6 @@ export const SETTINGS_TABS: SettingsTabConfig[] = [
     icon: CurrencyEuroIcon
   },
   { 
-    id: 'production', 
-    name: 'Produktion', 
-    icon: BeakerIcon
-  },
-  { 
     id: 'system', 
     name: 'System', 
     icon: Cog6ToothIcon
@@ -79,11 +74,6 @@ export const SETTINGS_TABS: SettingsTabConfig[] = [
     id: 'logs', 
     name: 'Logs & Aktivitäten', 
     icon: LogsIcon
-  },
-  { 
-    id: 'analytics', 
-    name: 'Analytics & Scraper', 
-    icon: ChartBarIcon
   }
 ];
 
@@ -93,15 +83,8 @@ export const DEFAULT_SETTINGS: SystemSettings = {
   registration_enabled: true,
   require_email_verification: false,
   password_reset_token_expiry_hours: 24,
-  company_name: 'LCREE',
+  company_name: 'User Management System',
   currency: 'EUR',
-  qr_base_url: 'https://yourdomain.com',
-  print_agent_url: 'http://localhost:5000',
-  default_loss_factor_oil_percent: 2.0,
-  require_second_batch_scan_on_insufficient: true,
-  show_older_batch_warning: true,
-  analytics_defaults: {},
-  scraper_settings: {},
   
   // NEUE ADMIN-FUNKTIONEN (nur Frontend)
   // Wartungsmodus
@@ -150,7 +133,7 @@ export const DEFAULT_SETTINGS: SystemSettings = {
   
   // Benutzer-Management
   user_registration_approval_required: false,
-  default_user_role: 'VIEWER',
+  default_user_role: 'GUEST',
   user_session_timeout_minutes: 480,
   allow_multiple_sessions: true,
   force_password_change_on_first_login: false,
@@ -237,11 +220,11 @@ export const SETTINGS_SECTIONS: Record<string, SettingsSection[]> = {
           label: 'Standard-Benutzerrolle',
           type: 'select',
           options: [
-            { value: 'VIEWER', label: 'VIEWER - Nur Lesen' },
-            { value: 'SALES', label: 'SALES - Verkauf' },
-            { value: 'WAREHOUSE', label: 'WAREHOUSE - Lager' },
-            { value: 'PRODUCTION', label: 'PRODUCTION - Produktion' },
-            { value: 'ADMIN', label: 'ADMIN - Vollzugriff' }
+            { value: 'GUEST', label: 'GUEST - Nur Lesen' },
+            { value: 'USER', label: 'USER - Standard-Benutzer' },
+            { value: 'MANAGER', label: 'MANAGER - Manager' },
+            { value: 'ADMIN', label: 'ADMIN - Administrator' },
+            { value: 'SUPER_ADMIN', label: 'SUPER_ADMIN - Super-Administrator' }
           ],
           helperText: 'Standard-Rolle für neue Benutzer'
         }
@@ -320,7 +303,7 @@ export const SETTINGS_SECTIONS: Record<string, SettingsSection[]> = {
           label: 'Firmenname',
           type: 'text',
           required: true,
-          placeholder: 'LCREE'
+          placeholder: 'User Management System'
         },
         {
           key: 'currency',
@@ -336,72 +319,6 @@ export const SETTINGS_SECTIONS: Record<string, SettingsSection[]> = {
         }
       ]
     },
-    {
-      title: 'URL-Konfiguration',
-      fields: [
-        {
-          key: 'qr_base_url',
-          label: 'QR-Code Basis-URL',
-          type: 'url',
-          required: true,
-          placeholder: 'https://yourdomain.com'
-        },
-        {
-          key: 'print_agent_url',
-          label: 'Print-Agent URL',
-          type: 'url',
-          required: true,
-          placeholder: 'http://localhost:5000'
-        }
-      ]
-    }
-  ],
-  production: [
-    {
-      title: 'Produktionseinstellungen',
-      fields: [
-        {
-          key: 'default_loss_factor_oil_percent',
-          label: 'Standard-Verlustfaktor Öl (%)',
-          type: 'number',
-          required: true,
-          min: 0,
-          max: 100,
-          step: 0.1
-        },
-        {
-          key: 'require_second_batch_scan_on_insufficient',
-          label: 'Zweite Charge-Scan bei unzureichender Menge',
-          type: 'boolean',
-          helperText: 'Erfordert zweiten Scan wenn Charge nicht ausreicht'
-        },
-        {
-          key: 'show_older_batch_warning',
-          label: 'Warnung bei älteren Chargen anzeigen',
-          type: 'boolean',
-          helperText: 'Zeigt Warnung bei Chargen die älter sind'
-        }
-      ]
-    }
-  ],
-  analytics: [
-    {
-      title: 'Analytics & Scraper',
-      fields: [
-        {
-          key: 'analytics_defaults',
-          label: 'Analytics-Standardeinstellungen (JSON)',
-          type: 'json',
-          helperText: 'JSON-Konfiguration für Analytics'
-        },
-        {
-          key: 'scraper_settings',
-          label: 'Scraper-Einstellungen (JSON)',
-          type: 'json',
-          helperText: 'JSON-Konfiguration für Scraper'
-        }
-      ]
-    }
   ],
   
   // NEUE ADMIN-SEKTIONEN

@@ -14,7 +14,7 @@ import {
   ExclamationCircleIcon,
   CheckCircleIcon 
 } from '@heroicons/react/24/outline';
-import { LoadingSpinner } from '../LoadingUI';
+import { LoadingSpinner } from '../common/LoadingUI';
 
 // Typen für einheitliche Form-Komponenten
 export type FormVariant = 'default' | 'filled' | 'outlined';

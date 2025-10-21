@@ -9,7 +9,7 @@
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { settingsService } from '../services/apiServices';
-import { userManager } from '../api/auth';
+import { userManager } from '../lib/api/auth';
 import { useFormValidation } from './useFormValidation';
 import { DEFAULT_SETTINGS, SETTINGS_VALIDATION_RULES } from '../config/settingsConfig';
 import type { SystemSettings, SettingsValidationErrors } from '../types/settings';

@@ -75,9 +75,10 @@ export const useAuthStatus = () => {
     isLoading: isLoading || !isInitialized,
     isReady: isInitialized && !isLoading,
     isGuest: isInitialized && !isAuthenticated,
-    isAdmin: user?.role === 'admin',
-    isViewer: user?.role === 'viewer',
-    isEditor: user?.role === 'editor',
+    isAdmin: user?.role === 'ADMIN' || user?.role === 'SUPER_ADMIN',
+    isManager: user?.role === 'MANAGER',
+    isUser: user?.role === 'USER',
+    isGuest: user?.role === 'GUEST',
   };
 };
 

@@ -13,7 +13,7 @@ import {
   SecondaryButton, 
   DangerButton,
   IconButton 
-} from '../components/buttons/ButtonComponents';
+} from '../components/ui/buttons/ButtonComponents';
 import { 
   TextInput, 
   EmailInput, 
@@ -34,7 +34,7 @@ import {
   BaseCard, 
   CardWithHeader, 
   StatsCard 
-} from '../components/cards/CardComponents';
+} from '../components/ui/cards/CardComponents';
 
 // VORHER: Wiederholte Styles
 const OldComponent = () => {

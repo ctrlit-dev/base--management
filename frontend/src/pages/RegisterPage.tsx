@@ -11,11 +11,11 @@ import {
   ShieldCheckIcon
 } from '@heroicons/react/24/outline';
 import { BackgroundRenderer } from '../components/BackgroundRenderer';
-import { SettingsSidebar } from '../components/SettingsSidebar';
-import { SettingsButton } from '../components/SettingsButton';
-import { FloatingLabel } from '../components/FloatingLabel';
-import PasswordStrengthMeter from '../components/PasswordStrengthMeter';
-import { authApi, userManager, tokenManager } from '../api/auth';
+import { SettingsSidebar } from '../components/forms/SettingsSidebar';
+import { SettingsButton } from '../components/ui/buttons/SettingsButton';
+import { FloatingLabel } from '../components/ui/inputs/FloatingLabel';
+import PasswordStrengthMeter from '../features/auth/PasswordStrengthMeter';
+import { authApi, userManager, tokenManager } from '../lib/api/auth';
 import { useBackgroundStore } from '../store/backgroundStore';
 import { useFormValidation, commonValidationRules } from '../hooks/useFormValidation';
 import { handleApiError, handleFormError, logError, handlePasskeyError } from '../utils/errorHandling';

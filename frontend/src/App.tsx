@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from './components/Toaster';
 import { AuthProvider } from './contexts/AuthContext';
-import { EnhancedErrorBoundary } from './components/errors/EnhancedErrorBoundary';
+import { EnhancedErrorBoundary } from './components/common/errors/EnhancedErrorBoundary';
 import { LoginPage } from './pages/LoginPage';
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
 import { RegisterPage } from './pages/RegisterPage';
@@ -10,7 +10,7 @@ import { ProfileSettingsPage } from './pages/ProfileSettingsPage';
 import { AdministrativeSettingsPage } from './pages/AdministrativeSettingsPage';
 import { ForbiddenPage } from './pages/ForbiddenPage';
 import { ComponentShowcasePage } from './pages/ComponentShowcasePage';
-import { TemplatePage, ExamplePage, ProductionPage } from './pages/TemplatePage';
+import { TemplatePage, ExamplePage } from './pages/TemplatePage';
 
 // Route-Konfiguration für DRY-Prinzip
 const routes = [
@@ -26,7 +26,6 @@ const routes = [
   { path: '/components', element: <ComponentShowcasePage /> },
   { path: '/template', element: <TemplatePage /> },
   { path: '/example', element: <ExamplePage /> },
-  { path: '/production', element: <ProductionPage /> },
 ];
 
 // Wrapper-Komponente für Error Boundary

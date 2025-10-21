@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import type { UserRole } from '../types/auth';
 
 interface User {
   id: number;
@@ -16,6 +17,7 @@ interface AuthState {
   login: (user: User, accessToken: string, refreshToken: string) => void;
   logout: () => void;
   updateTokens: (accessToken: string, refreshToken?: string) => void;
+  hasAnyRole: (roles: UserRole[]) => boolean;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -49,6 +51,12 @@ export const useAuthStore = create<AuthState>()(
           accessToken,
           refreshToken: refreshToken || state.refreshToken,
         }));
+      },
+      
+      hasAnyRole: (roles: UserRole[]) => {
+        const { user } = get();
+        if (!user || !user.roles) return false;
+        return roles.some(role => user.roles.includes(role));
       },
     }),
     {

@@ -19,15 +19,15 @@ import {
   MapPinIcon,
   TrashIcon
 } from '@heroicons/react/24/outline';
-import { SecondaryButton, DangerButton, WarningButton } from '../components/buttons/ButtonComponents';
+import { SecondaryButton, DangerButton, WarningButton } from '../components/ui/buttons/ButtonComponents';
 import { BackgroundRenderer } from '../components/BackgroundRenderer';
-import { TopNavigation } from '../components/TopNavigation';
-import { SettingsSidebar } from '../components/SettingsSidebar';
-import { userManager, authApi, type Session, type ProfileSettings, type User } from '../api/auth';
+import { TopNavigation } from '../components/common/TopNavigation';
+import { SettingsSidebar } from '../components/forms/SettingsSidebar';
+import { userManager, authApi, type Session, type ProfileSettings, type User } from '../lib/api/auth';
 import { useBackgroundStore } from '../store/backgroundStore';
 import Avatar from '../components/Avatar';
-import PasskeyManager from '../components/PasskeyManager';
-import PasswordStrengthMeter from '../components/PasswordStrengthMeter';
+import PasskeyManager from '../features/auth/PasskeyManager';
+import PasswordStrengthMeter from '../features/auth/PasswordStrengthMeter';
 import { useFormValidation, commonValidationRules } from '../hooks/useFormValidation';
 import { handleApiError, handleFormError, logError } from '../utils/errorHandling';
 import { validatePasswordConfirmation } from '../utils/passwordUtils';
@@ -464,10 +464,9 @@ export function ProfileSettingsPage() {
   const getRoleDisplayName = (role: string) => {
     const roleNames: Record<string, string> = {
       'ADMIN': 'Administrator',
-      'PRODUCTION': 'Produktion',
-      'WAREHOUSE': 'Lager',
-      'SALES': 'Verkauf',
-      'VIEWER': 'Betrachter'
+      'MANAGER': 'Manager',
+      'USER': 'Benutzer',
+      'GUEST': 'Gast'
     };
     return roleNames[role] || role;
   };

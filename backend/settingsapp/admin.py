@@ -1,6 +1,6 @@
 """
-LCREE Settings App Admin Configuration
-=======================================
+User Management Settings App Admin Configuration
+================================================
 
 Vollständige Django Admin-Konfiguration für die Settings-App.
 """
@@ -19,14 +19,13 @@ class SystemSettingsAdmin(admin.ModelAdmin):
     
     Bietet vollständige Verwaltung der Systemeinstellungen mit:
     - Singleton-Pattern für globale Einstellungen
-    - QR-Code-Basis-URL und Print-Agent-Konfiguration
-    - Standard-Verlustfaktoren
-    - Analytics-Voreinstellungen
+    - Authentifizierungs-Einstellungen
+    - Benutzer-Management-Konfiguration
     """
     
     list_display = [
-        'id', 'company_name', 'currency', 'qr_base_url', 
-        'print_agent_url', 'default_loss_factor_oil_percent'
+        'id', 'company_name', 'currency', 'registration_enabled', 
+        'require_email_verification', 'maintenance_mode', 'two_factor_required'
     ]
     readonly_fields = ['id']
     
@@ -34,19 +33,36 @@ class SystemSettingsAdmin(admin.ModelAdmin):
         ('Firmen-Informationen', {
             'fields': ('company_name', 'currency')
         }),
-        ('Externe Services', {
-            'fields': ('qr_base_url', 'print_agent_url')
-        }),
-        ('Produktions-Einstellungen', {
-            'fields': ('default_loss_factor_oil_percent', 'require_second_batch_scan_on_insufficient', 'show_older_batch_warning'),
+        ('Authentifizierungs-Einstellungen', {
+            'fields': ('registration_enabled', 'require_email_verification', 'password_reset_token_expiry_hours'),
             'classes': ('collapse',)
         }),
-        ('Analytics-Voreinstellungen', {
-            'fields': ('analytics_defaults',),
+        ('Wartungsmodus', {
+            'fields': ('maintenance_mode', 'maintenance_message', 'maintenance_allowed_ips'),
             'classes': ('collapse',)
         }),
-        ('Scraper-Einstellungen', {
-            'fields': ('scraper_settings',),
+        ('Sicherheits-Einstellungen', {
+            'fields': ('two_factor_required', 'session_timeout_minutes', 'max_login_attempts', 'password_min_length', 'password_require_special_chars', 'account_lockout_duration_minutes'),
+            'classes': ('collapse',)
+        }),
+        ('Benutzer-Management', {
+            'fields': ('user_registration_approval_required', 'default_user_role', 'user_session_timeout_minutes', 'allow_multiple_sessions', 'force_password_change_on_first_login'),
+            'classes': ('collapse',)
+        }),
+        ('E-Mail-Benachrichtigungen', {
+            'fields': ('email_enabled', 'smtp_host', 'smtp_port', 'smtp_username', 'smtp_password', 'smtp_use_tls', 'email_from_address'),
+            'classes': ('collapse',)
+        }),
+        ('Backup & Wartung', {
+            'fields': ('backup_enabled', 'backup_frequency_hours', 'backup_retention_days', 'backup_location', 'log_retention_days', 'audit_log_enabled', 'performance_monitoring'),
+            'classes': ('collapse',)
+        }),
+        ('API & Integration', {
+            'fields': ('api_rate_limit_per_minute', 'api_key_expiry_days', 'webhook_enabled', 'webhook_url', 'webhook_secret', 'external_api_timeout_seconds', 'retry_failed_requests'),
+            'classes': ('collapse',)
+        }),
+        ('Datenschutz & Compliance', {
+            'fields': ('data_retention_days', 'anonymize_old_data', 'consent_required', 'privacy_policy_url', 'terms_of_service_url'),
             'classes': ('collapse',)
         }),
     )
@@ -57,11 +73,11 @@ class SystemSettingsAdmin(admin.ModelAdmin):
         """Einstellungen auf Standardwerte zurücksetzen"""
         settings = SystemSettings.objects.first()
         if settings:
-            settings.company_name = "LCREE"
+            settings.company_name = "User Management System"
             settings.currency = "EUR"
-            settings.qr_base_url = "https://yourdomain.com"
-            settings.print_agent_url = "http://localhost:5000"
-            settings.default_loss_factor_oil_percent = 2.0
+            settings.registration_enabled = True
+            settings.require_email_verification = False
+            settings.password_reset_token_expiry_hours = 24
             settings.save()
             self.message_user(request, 'Einstellungen wurden auf Standardwerte zurückgesetzt.')
         else:

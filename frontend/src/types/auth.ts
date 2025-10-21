@@ -6,7 +6,9 @@
  * Bietet typsichere Auth-State-Verwaltung mit React Context.
  */
 
-import type { User } from '../api/auth';
+import type { User } from '../lib/api/auth';
+
+export type UserRole = 'SUPER_ADMIN' | 'ADMIN' | 'MANAGER' | 'USER' | 'GUEST';
 
 export interface AuthTokens {
   access: string;

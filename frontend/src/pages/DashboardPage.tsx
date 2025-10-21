@@ -7,9 +7,9 @@ import {
   ShieldCheckIcon
 } from '@heroicons/react/24/outline';
 import { BackgroundRenderer } from '../components/BackgroundRenderer';
-import { SettingsSidebar } from '../components/SettingsSidebar';
-import { TopNavigation } from '../components/TopNavigation';
-import { userManager } from '../api/auth';
+import { SettingsSidebar } from '../components/forms/SettingsSidebar';
+import { TopNavigation } from '../components/common/TopNavigation';
+import { userManager } from '../lib/api/auth';
 import { useBackgroundStore } from '../store/backgroundStore';
 
 interface User {
@@ -17,7 +17,7 @@ interface User {
   email: string;
   first_name: string;
   last_name: string;
-  role: 'ADMIN' | 'PRODUCTION' | 'WAREHOUSE' | 'SALES' | 'VIEWER';
+  role: 'SUPER_ADMIN' | 'ADMIN' | 'MANAGER' | 'USER' | 'GUEST';
   is_active: boolean;
   avatar?: string;
   language: string;
@@ -54,22 +54,22 @@ export function DashboardPage() {
 
   const getRoleDisplayName = (role: string) => {
     const roleNames: Record<string, string> = {
+      'SUPER_ADMIN': 'Super-Administrator',
       'ADMIN': 'Administrator',
-      'PRODUCTION': 'Produktion',
-      'WAREHOUSE': 'Lager',
-      'SALES': 'Verkauf',
-      'VIEWER': 'Betrachter'
+      'MANAGER': 'Manager',
+      'USER': 'Benutzer',
+      'GUEST': 'Gast'
     };
     return roleNames[role] || role;
   };
 
   const getRoleColor = (role: string) => {
     const roleColors: Record<string, string> = {
+      'SUPER_ADMIN': 'from-red-600 to-purple-600',
       'ADMIN': 'from-purple-500 to-purple-600',
-      'PRODUCTION': 'from-green-500 to-green-600',
-      'WAREHOUSE': 'from-yellow-500 to-yellow-600',
-      'SALES': 'from-blue-500 to-blue-600',
-      'VIEWER': 'from-gray-500 to-gray-600'
+      'MANAGER': 'from-blue-500 to-blue-600',
+      'USER': 'from-green-500 to-green-600',
+      'GUEST': 'from-gray-500 to-gray-600'
     };
     return roleColors[role] || 'from-gray-500 to-gray-600';
   };

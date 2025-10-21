@@ -7,7 +7,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { auditLogsApi, type AuditLog, type LogFilters } from '../api/auditLogs';
+import { auditLogsApi, type AuditLog, type LogFilters } from '../lib/api/auditLogs';
 
 interface UseAuditLogsReturn {
   // Audit Logs

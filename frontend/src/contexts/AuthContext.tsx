@@ -14,7 +14,7 @@
  */
 
 import React, { createContext, useContext, useReducer, useEffect, useCallback, useMemo } from 'react';
-import { authApi, extendedTokenManager, userManager, type User } from '../api/auth';
+import { authApi, extendedTokenManager, userManager, type User } from '../lib/api/auth';
 import { handleApiError, logError } from '../utils/errorHandling';
 import type { 
   AuthState, 

@@ -1,21 +1,19 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { BackgroundRenderer } from '../components/BackgroundRenderer';
-import { TopNavigation } from '../components/TopNavigation';
-import { SettingsSidebar } from '../components/SettingsSidebar';
-import { userManager } from '../api/auth';
+import { TopNavigation } from '../components/common/TopNavigation';
+import { SettingsSidebar } from '../components/forms/SettingsSidebar';
+import { userManager } from '../lib/api/auth';
 import { useBackgroundStore } from '../store/backgroundStore';
 import { useNavigationStore } from '../store/navigationStore';
 import { useSettings } from '../hooks/useSettings';
-import { SETTINGS_TABS, SETTINGS_SECTIONS } from '../config/settingsConfig';
-import { SettingsHeader, SettingsSection, MaintenanceModeAlert, SystemStatus } from '../components/settings/SettingsComponents';
-import { RealActivityLogs, RealErrorLogs } from '../components/settings/RealLogComponents';
+import { SETTINGS_TABS } from '../config/settingsConfig';
 import { DeveloperMenu } from '../components/DeveloperMenu';
-import { UserManagement } from '../components/admin/UserManagement';
-import type { User } from '../api/auth';
-import type { SettingsTab, SystemSettings } from '../types/settings';
+import { SettingsTabContent } from '../features/settings/SettingsTabContent';
+import type { User } from '../lib/api/auth';
+import type { SettingsTab } from '../types/settings';
 
 export function AdministrativeSettingsPage() {
   const navigate = useNavigate();
@@ -25,20 +23,12 @@ export function AdministrativeSettingsPage() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isDevMenuOpen, setIsDevMenuOpen] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(80);
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const { backgroundType } = useBackgroundStore();
   const { isStickyNavigation } = useNavigationStore();
 
   // Settings-Hook für zentrale Logik
   const {
-    settings,
-    isLoading,
-    isSaving,
-    successMessage,
-    errors,
-    loadSettings,
-    saveSettings,
-    updateSetting
+    loadSettings
   } = useSettings();
 
   // Memoized handlers
@@ -59,32 +49,11 @@ export function AdministrativeSettingsPage() {
     navigate('/login');
   }, [navigate]);
 
-  const handleSaveSettings = useCallback(async () => {
-    const success = await saveSettings();
-    if (success) {
-      setHasUnsavedChanges(false);
-    }
-  }, [saveSettings]);
-
   const handleBackToDashboard = useCallback(() => {
     navigate('/dashboard');
   }, [navigate]);
 
-  const handleFieldChange = useCallback((field: keyof SystemSettings, value: any) => {
-    updateSetting(field, value);
-    setHasUnsavedChanges(true);
-  }, [updateSetting]);
-
-  // Memoized computed values
-  const currentTabConfig = useMemo(() => 
-    SETTINGS_TABS.find(tab => tab.id === activeTab), 
-    [activeTab]
-  );
-
-  const currentSections = useMemo(() => 
-    SETTINGS_SECTIONS[activeTab] || [], 
-    [activeTab]
-  );
+  // Memoized computed values - nicht mehr benötigt da in SettingsTabContent verschoben
 
 
   useEffect(() => {
@@ -93,7 +62,7 @@ export function AdministrativeSettingsPage() {
       if (currentUser) {
         setUser(currentUser);
         // Prüfe Admin-Berechtigung
-        if (currentUser.role !== 'ADMIN') {
+        if (currentUser.role !== 'ADMIN' && currentUser.role !== 'SUPER_ADMIN') {
           navigate('/forbidden');
           return;
         }
@@ -105,12 +74,6 @@ export function AdministrativeSettingsPage() {
     fetchUserAndSettings();
   }, [navigate, loadSettings]);
 
-  // Setze hasUnsavedChanges zurück, wenn Settings geladen werden
-  useEffect(() => {
-    if (settings && !isLoading) {
-      setHasUnsavedChanges(false);
-    }
-  }, [settings, isLoading]);
 
   // Dynamische Header-Höhe messen
   useEffect(() => {
@@ -319,72 +282,10 @@ export function AdministrativeSettingsPage() {
           animate={{ marginLeft: isSidebarCollapsed ? 0 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl mx-auto"
-          >
-            {/* Header */}
-            <SettingsHeader
-              title={currentTabConfig?.name || 'Einstellungen'}
-              description={currentTabConfig?.description || ''}
-              successMessage={successMessage}
-              isSaving={isSaving}
-              hasChanges={hasUnsavedChanges && !isLoading}
-              onSave={handleSaveSettings}
-              onBack={handleBackToDashboard}
-            />
-
-            {/* Wartungsmodus-Warnung */}
-            <MaintenanceModeAlert settings={settings} />
-
-            {/* Settings Content */}
-            {isLoading ? (
-              <div className="flex items-center justify-center py-12">
-                <div className="w-8 h-8 border-4 border-accent-blue border-t-transparent rounded-full animate-spin"></div>
-                <span className="ml-3 text-text-secondary">Lade Einstellungen...</span>
-                        </div>
-            ) : (
-                  <div className="space-y-6">
-                {/* System-Status für System-Tab */}
-                {activeTab === 'system' && (
-                  <SystemStatus settings={settings} />
-                )}
-
-                {/* Logs-Tab spezielle Behandlung */}
-                {activeTab === 'logs' ? (
-                  <div className="space-y-6">
-                    <div className="card p-6">
-                      <RealActivityLogs />
-                    </div>
-                    <div className="card p-6">
-                      <RealErrorLogs />
-                    </div>
-                  </div>
-                ) : activeTab === 'users' ? (
-                  /* Benutzer-Management */
-                  <UserManagement />
-                ) : (
-                  /* Settings-Formulare */
-                  <div className="card p-8">
-                    <div className="space-y-4">
-                      {currentSections.map((section, index) => (
-                        <SettingsSection
-                          key={index}
-                          title={section.title}
-                          icon={section.icon}
-                          fields={section.fields}
-                          settings={settings}
-                          errors={errors}
-                          onFieldChange={handleFieldChange}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-          </motion.div>
+          <SettingsTabContent 
+            activeTab={activeTab}
+            onBack={handleBackToDashboard}
+          />
         </motion.div>
       </div>
 
