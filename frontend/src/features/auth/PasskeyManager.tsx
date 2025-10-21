@@ -11,6 +11,7 @@ import {
   ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
 import { authApi } from '../../lib/api/auth';
+import { passkeyLogger } from '../../lib/logger';
 
 interface PasskeyCredential {
   id: number;
@@ -60,7 +61,7 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
     
     // Debug-Logging aktivieren
     const debugLog = (message: string, data?: any) => {
-      console.log(`[PASSKEY DEBUG] ${message}`, data || '');
+      passkeyLogger.debug(message, data);
     };
     
     try {
@@ -82,15 +83,14 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
         sessionDataKeys: Object.keys((optionsResponse.data as any).session_data || {})
       });
 
-      console.log('Registration options received:', optionsResponse.data.options);
-      console.log('Session data received:', (optionsResponse.data as any).session_data);
+      passkeyLogger.info('Registration options received', optionsResponse.data.options);
+      passkeyLogger.info('Session data received', (optionsResponse.data as any).session_data);
 
       // Speichere Session-Daten für späteren Gebrauch
       const sessionData = (optionsResponse.data as any).session_data;
       if (sessionData) {
         localStorage.setItem('passkey_session_data', JSON.stringify(sessionData));
         debugLog('Session data saved to localStorage', sessionData);
-        console.log('Session data saved to localStorage:', sessionData);
       }
 
       // Schritt 2: Konvertiere Base64-Challenge zu ArrayBuffer
@@ -151,7 +151,7 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
         authenticatorSelection: webAuthnOptions.authenticatorSelection
       });
 
-      console.log('WebAuthn options prepared:', {
+      passkeyLogger.debug('WebAuthn options prepared', {
         ...webAuthnOptions,
         challenge: '[ArrayBuffer]',
         user: { ...webAuthnOptions.user, id: '[ArrayBuffer]' }
@@ -161,7 +161,7 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
       debugLog('Step 4: Calling navigator.credentials.create');
       
       // Zusätzliche Debugging-Informationen
-      console.log('Final WebAuthn options before create:', {
+      passkeyLogger.debug('Final WebAuthn options before create', {
         rp: webAuthnOptions.rp,
         user: { ...webAuthnOptions.user, id: '[ArrayBuffer]' },
         challenge: '[ArrayBuffer]',
@@ -179,17 +179,18 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
       
       // Prüfe ob der Browser Passkeys unterstützt
       const available = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-      console.log('Platform authenticator available:', available);
+      passkeyLogger.debug('Platform authenticator available', available);
       
       // Prüfe weitere WebAuthn-Features
-      console.log('WebAuthn features check:');
-      console.log('- PublicKeyCredential supported:', !!window.PublicKeyCredential);
-      console.log('- navigator.credentials supported:', !!navigator.credentials);
-      console.log('- navigator.credentials.create supported:', typeof navigator.credentials.create === 'function');
-      console.log('- Current origin:', window.location.origin);
-      console.log('- Current protocol:', window.location.protocol);
-      console.log('- Is secure context:', window.isSecureContext);
-      console.log('- User Agent:', navigator.userAgent);
+      passkeyLogger.debug('WebAuthn features check', {
+        publicKeyCredentialSupported: !!window.PublicKeyCredential,
+        navigatorCredentialsSupported: !!navigator.credentials,
+        createSupported: typeof navigator.credentials.create === 'function',
+        currentOrigin: window.location.origin,
+        currentProtocol: window.location.protocol,
+        isSecureContext: window.isSecureContext,
+        userAgent: navigator.userAgent
+      });
       
       const credential = await navigator.credentials.create({
         publicKey: webAuthnOptions
@@ -205,12 +206,6 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
         type: credential.type,
         rawIdLength: credential.rawId.byteLength,
         responseType: credential.response?.constructor?.name
-      });
-
-      console.log('Credential created:', {
-        id: credential.id,
-        type: credential.type,
-        rawId: credential.rawId.byteLength
       });
 
       // Schritt 4: Konvertiere Credential für Backend
@@ -241,7 +236,7 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
         hasSessionData: !!sessionData
       });
 
-      console.log('Request data prepared:', {
+      passkeyLogger.debug('Request data prepared', {
         credentialId: credentialForBackend.id,
         rawIdLength: credentialForBackend.rawId.length,
         responseKeys: Object.keys(credentialForBackend.response),
@@ -268,7 +263,7 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
         localStorage.removeItem('passkey_session_data');
       } else if (registerResponse.error) {
         debugLog('ERROR: Backend returned error', registerResponse.error);
-        console.error('Registration error:', registerResponse.error);
+        passkeyLogger.error('Registration error', registerResponse.error);
         onError?.(registerResponse.error);
       }
     } catch (error: any) {
@@ -278,8 +273,8 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
         stack: error.stack?.substring(0, 500) + '...'
       });
       
-      console.error('Registration error details:', error);
-      console.error('Error stack:', error.stack);
+      passkeyLogger.error('Registration error details', error);
+      passkeyLogger.error('Error stack', error.stack);
       
       // Bereinige Session-Daten bei Fehler
       localStorage.removeItem('passkey_session_data');
@@ -290,12 +285,13 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
         onError?.('Passkeys werden von diesem Browser nicht unterstützt. Bitte verwenden Sie einen modernen Browser wie Chrome, Firefox oder Safari.');
       } else if (error.name === 'NotAllowedError') {
         debugLog('ERROR: User cancelled or denied registration');
-        console.log('NotAllowedError details:', error);
-        console.log('Possible causes:');
-        console.log('1. User cancelled the operation');
-        console.log('2. Timeout occurred');
-        console.log('3. Browser security restrictions');
-        console.log('4. Invalid WebAuthn options');
+        passkeyLogger.warn('NotAllowedError details', error);
+        passkeyLogger.warn('Possible causes', {
+          userCancelled: 'User cancelled the operation',
+          timeout: 'Timeout occurred',
+          browserRestrictions: 'Browser security restrictions',
+          invalidOptions: 'Invalid WebAuthn options'
+        });
         onError?.('Registrierung wurde abgebrochen oder verweigert. Mögliche Ursachen: Zeitüberschreitung, Browser-Sicherheitsbeschränkungen oder ungültige Optionen. Bitte versuchen Sie es erneut.');
       } else if (error.name === 'InvalidStateError') {
         debugLog('ERROR: Passkey already exists for this browser');

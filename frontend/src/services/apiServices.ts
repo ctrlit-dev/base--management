@@ -16,6 +16,7 @@
 
 import { authApi, type ApiResponse, type User } from '../lib/api/auth';
 import { handleApiError, logError, retryApiCall } from '../utils/errorHandling';
+import { apiLogger } from '../lib/logger';
 import type { Session } from '../lib/api/auth';
 
 // Base Service Class
@@ -349,17 +350,17 @@ export class SettingsService extends BaseService {
   async getSettings(): Promise<any> {
     return this.handleRequest(
       async () => {
-        console.log('SettingsService: Lade Einstellungen...');
+        apiLogger.info('SettingsService: Lade Einstellungen...');
         
         // Token automatisch aktualisieren falls nötig
         const { extendedTokenManager } = await import('../lib/api/auth');
         await extendedTokenManager.refreshTokenIfNeeded();
         
         const { accessToken } = extendedTokenManager.getTokens();
-        console.log('Token vorhanden:', !!accessToken);
+        apiLogger.debug('Token vorhanden', !!accessToken);
         
         const url = `${import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1'}/settings/settings/`;
-        console.log('API URL:', url);
+        apiLogger.debug('API URL', url);
         
         const response = await fetch(url, {
           method: 'GET',
@@ -369,16 +370,16 @@ export class SettingsService extends BaseService {
           },
         });
         
-        console.log('Response Status:', response.status);
+        apiLogger.debug('Response Status', response.status);
         
         // Bei 401-Fehler: Token erneut aktualisieren und nochmal versuchen
         if (response.status === 401) {
-          console.log('401-Fehler, versuche Token-Refresh...');
+          apiLogger.info('401-Fehler, versuche Token-Refresh...');
           const refreshSuccess = await extendedTokenManager.refreshTokenIfNeeded();
           
           if (refreshSuccess) {
             const { accessToken: newAccessToken } = extendedTokenManager.getTokens();
-            console.log('Token aktualisiert, versuche erneut...');
+            apiLogger.info('Token aktualisiert, versuche erneut...');
             
             const retryResponse = await fetch(url, {
               method: 'GET',
@@ -431,7 +432,7 @@ export class SettingsService extends BaseService {
         const { accessToken } = extendedTokenManager.getTokens();
         
         const url = `${import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1'}/settings/settings/1/`;
-        console.log('API URL:', url);
+        apiLogger.debug('API URL', url);
         
         const response = await fetch(url, {
           method: 'PUT',
