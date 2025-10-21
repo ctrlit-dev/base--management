@@ -49,7 +49,7 @@ export function TopNavigation({ user, onLogout, onSettingsOpen }: TopNavigationP
           </motion.div>
 
           {/* Navigation Items */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             <motion.button
               onClick={() => navigate('/dashboard')}
               className="nav-item"
