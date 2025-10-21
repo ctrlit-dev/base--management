@@ -59,8 +59,6 @@ export function RegisterPage() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const { backgroundType } = useBackgroundStore();
 
-
-
   // Form validation hook - spezifisch für RegisterPage
   const validation = useFormValidation<RegisterFormData>({
     firstName: commonValidationRules.firstName,
@@ -890,4 +888,3 @@ export function RegisterPage() {
     </div>
   );
 }
-

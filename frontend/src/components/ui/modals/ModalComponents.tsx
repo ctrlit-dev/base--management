@@ -192,7 +192,6 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
     }
   };
 
-
   return (
     <BaseModal isOpen={isOpen} onClose={onClose} size="sm">
       <div className="p-6">

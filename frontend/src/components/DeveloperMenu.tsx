@@ -82,7 +82,6 @@ export function DeveloperMenu({ isOpen, onClose }: DeveloperMenuProps) {
     toast.success('Alle Toasts wurden gelöscht!');
   };
 
-
   // Utility Funktionen
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -394,7 +393,6 @@ export function DeveloperMenu({ isOpen, onClose }: DeveloperMenuProps) {
                           </motion.button>
                         </div>
                       </div>
-
 
                       {/* Navigation Toggle */}
                       <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 mb-6">

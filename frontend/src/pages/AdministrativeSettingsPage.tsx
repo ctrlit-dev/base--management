@@ -55,7 +55,6 @@ export function AdministrativeSettingsPage() {
 
   // Memoized computed values - nicht mehr benötigt da in SettingsTabContent verschoben
 
-
   useEffect(() => {
     const fetchUserAndSettings = async () => {
       const currentUser = userManager.getCurrentUser();
@@ -73,7 +72,6 @@ export function AdministrativeSettingsPage() {
     };
     fetchUserAndSettings();
   }, [navigate, loadSettings]);
-
 
   // Dynamische Header-Höhe messen
   useEffect(() => {
@@ -112,7 +110,6 @@ export function AdministrativeSettingsPage() {
       </div>
     );
   }
-
 
   return (
     <div className="min-h-screen bg-background-primary theme-transition">
