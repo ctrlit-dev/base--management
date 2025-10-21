@@ -7,7 +7,6 @@ import {
   ArrowRightOnRectangleIcon,
   ChevronDownIcon
 } from '@heroicons/react/24/outline';
-import { userManager } from '../../lib/api/auth';
 import Avatar from '../Avatar';
 import type { User } from '../../types/user';
 

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useThemeStore } from '../../store/themeStore';
 import { useBackgroundStore, type BackgroundType } from '../../store/backgroundStore';

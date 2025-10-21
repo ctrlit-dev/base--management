@@ -15,7 +15,6 @@ import {
   passkeyService,
   settingsService
 } from '../services/apiServices';
-import type { User, Session } from '../lib/api/auth';
 
 // Auth Service Hooks
 export const useAuthOperations = () => {

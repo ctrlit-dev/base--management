@@ -49,7 +49,7 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
       } else if (response.error) {
         onError?.(response.error);
       }
-    } catch (error) {
+    } catch (_error) {
       onError?.('Fehler beim Laden der Passkeys');
     } finally {
       setLoading(false);
@@ -329,7 +329,7 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
       } else if (response.error) {
         onError?.(response.error);
       }
-    } catch (error) {
+    } catch (_error) {
       onError?.('Fehler beim Löschen des Passkeys');
     } finally {
       setDeleting(null);
