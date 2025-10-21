@@ -389,7 +389,7 @@ const PasskeyManager: React.FC<PasskeyManagerProps> = ({ onSuccess, onError }) =
         <motion.button
           onClick={registerPasskey}
           disabled={registering}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+          className="btn-primary flex items-center space-x-2"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >

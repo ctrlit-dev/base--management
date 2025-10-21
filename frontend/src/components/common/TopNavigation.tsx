@@ -52,7 +52,7 @@ export function TopNavigation({ user, onLogout, onSettingsOpen }: TopNavigationP
           <div className="flex items-center space-x-1">
             <motion.button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-background-primary/30 transition-all duration-200"
+              className="nav-item"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -62,7 +62,7 @@ export function TopNavigation({ user, onLogout, onSettingsOpen }: TopNavigationP
 
             <motion.button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-background-primary/30 transition-all duration-200"
+              className="nav-item"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -72,7 +72,7 @@ export function TopNavigation({ user, onLogout, onSettingsOpen }: TopNavigationP
 
             <motion.button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-background-primary/30 transition-all duration-200"
+              className="nav-item"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -82,7 +82,7 @@ export function TopNavigation({ user, onLogout, onSettingsOpen }: TopNavigationP
 
             <motion.button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-background-primary/30 transition-all duration-200"
+              className="nav-item"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -92,7 +92,7 @@ export function TopNavigation({ user, onLogout, onSettingsOpen }: TopNavigationP
 
             <motion.button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-background-primary/30 transition-all duration-200"
+              className="nav-item"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -102,7 +102,7 @@ export function TopNavigation({ user, onLogout, onSettingsOpen }: TopNavigationP
 
             <motion.button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-background-primary/30 transition-all duration-200"
+              className="nav-item"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -112,7 +112,7 @@ export function TopNavigation({ user, onLogout, onSettingsOpen }: TopNavigationP
 
             <motion.button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-background-primary/30 transition-all duration-200"
+              className="nav-item"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -122,7 +122,7 @@ export function TopNavigation({ user, onLogout, onSettingsOpen }: TopNavigationP
 
             <motion.button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-background-primary/30 transition-all duration-200"
+              className="nav-item"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

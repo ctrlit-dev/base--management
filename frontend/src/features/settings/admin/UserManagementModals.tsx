@@ -200,7 +200,7 @@ export const AddUserModal: React.FC<{
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-secondary hover:text-primary transition-colors"
+            className="btn-secondary"
             disabled={isSubmitting}
           >
             Abbrechen
@@ -357,7 +357,7 @@ export const EditUserModal: React.FC<{
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-secondary hover:text-primary transition-colors"
+            className="btn-secondary"
             disabled={isSubmitting}
           >
             Abbrechen
@@ -567,7 +567,7 @@ export const DeleteUserModal: React.FC<{
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-secondary hover:text-primary transition-colors"
+            className="btn-secondary"
             disabled={isDeleting}
           >
             Abbrechen

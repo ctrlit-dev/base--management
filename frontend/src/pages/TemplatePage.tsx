@@ -76,7 +76,7 @@ export function TemplatePage({
           <div className="space-y-8">
             {children || (
               <div className="text-center py-16">
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-12 shadow-sm border border-gray-200 dark:border-gray-700 max-w-2xl mx-auto">
+                <div className="card-base card-padding-xl max-w-2xl mx-auto">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CodeBracketIcon className="w-8 h-8 text-white" />
                   </div>
@@ -119,7 +119,7 @@ export function ExamplePage() {
       subtitle="Eine Beispiel-Seite mit dem Template"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+        <div className="card-base card-padding-md">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
             Card 1
           </h3>
@@ -128,7 +128,7 @@ export function ExamplePage() {
           </p>
         </div>
         
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+        <div className="card-base card-padding-md">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
             Card 2
           </h3>
@@ -137,7 +137,7 @@ export function ExamplePage() {
           </p>
         </div>
         
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+        <div className="card-base card-padding-md">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
             Card 3
           </h3>

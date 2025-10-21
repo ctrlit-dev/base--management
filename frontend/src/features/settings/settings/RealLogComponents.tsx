@@ -454,7 +454,7 @@ const LogFilterComponent: React.FC<LogFilterComponentProps> = ({ onFilterChange,
               </SecondaryButton>
               <button
                 onClick={() => setIsExpanded(false)}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                className="btn-primary btn-sm"
               >
                 Filter anwenden
               </button>
