@@ -9,21 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { userManager } from '../../lib/api/auth';
 import Avatar from '../Avatar';
-
-interface User {
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  role: 'SUPER_ADMIN' | 'ADMIN' | 'MANAGER' | 'USER' | 'GUEST';
-  is_active: boolean;
-  avatar?: string;
-  language: string;
-  timezone: string;
-  created_at: string;
-  updated_at: string;
-  last_login?: string;
-}
+import type { User } from '../../types/user';
 
 interface UserDropdownProps {
   user: User;

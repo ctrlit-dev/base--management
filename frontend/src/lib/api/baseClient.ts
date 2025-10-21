@@ -6,6 +6,8 @@
  * Eliminiert DRY-Verletzungen durch wiederverwendbare HTTP-Logik.
  */
 
+import type { User } from '../types/user';
+
 // API-Konfiguration
 export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
 
@@ -15,32 +17,6 @@ export interface ApiResponse<T = any> {
   message?: string;
   error?: string;
   errors?: Record<string, string[]>;
-}
-
-export interface User {
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  role: 'SUPER_ADMIN' | 'ADMIN' | 'MANAGER' | 'USER' | 'GUEST';
-  is_active: boolean;
-  avatar?: string;
-  language: string;
-  timezone: string;
-  created_at: string;
-  updated_at: string;
-  last_login?: string;
-  email_verified: boolean;
-  email_verified_at: string | null;
-  last_login_ip: string | null;
-  last_login_device: string | null;
-  login_notifications_enabled: boolean;
-  is_staff: boolean;
-  is_superuser: boolean;
-  date_joined: string;
-  is_deleted?: boolean;
-  deleted_at?: string | null;
-  deleted_by?: number | null;
 }
 
 // HTTP-Client mit zentralisierter Fehlerbehandlung

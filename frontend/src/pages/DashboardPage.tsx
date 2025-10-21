@@ -11,21 +11,7 @@ import { SettingsSidebar } from '../components/forms/SettingsSidebar';
 import { TopNavigation } from '../components/common/TopNavigation';
 import { userManager } from '../lib/api/auth';
 import { useBackgroundStore } from '../store/backgroundStore';
-
-interface User {
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  role: 'SUPER_ADMIN' | 'ADMIN' | 'MANAGER' | 'USER' | 'GUEST';
-  is_active: boolean;
-  avatar?: string;
-  language: string;
-  timezone: string;
-  created_at: string;
-  updated_at: string;
-  last_login?: string;
-}
+import type { User } from '../types/user';
 
 export function DashboardPage() {
   const navigate = useNavigate();

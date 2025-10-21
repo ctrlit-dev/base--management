@@ -13,46 +13,15 @@
  * - Wiederherstellen: POST /api/v1/accounts/users/{id}/restore/
  */
 
-import { BaseApiClient, type ApiResponse, type User } from './baseClient';
+import { BaseApiClient, type ApiResponse } from './baseClient';
+import type { User, UserRole, UserCreateData, UserUpdateData, UserFilters } from '../types/user';
 
-// Erweiterte Typen für Benutzerverwaltung
-export interface CreateUserData {
-  email: string;
-  first_name: string;
-  last_name: string;
-  password: string;
-  password_confirm: string;
-  role: 'SUPER_ADMIN' | 'ADMIN' | 'MANAGER' | 'USER' | 'GUEST';
-  is_active?: boolean;
-  language?: string;
-  timezone?: string;
-}
-
-export interface UpdateUserData {
-  email?: string;
-  first_name?: string;
-  last_name?: string;
-  role?: 'SUPER_ADMIN' | 'ADMIN' | 'MANAGER' | 'USER' | 'GUEST';
-  is_active?: boolean;
-  language?: string;
-  timezone?: string;
-}
-
+// Erweiterte Typen für Benutzerverwaltung (API-spezifisch)
 export interface UserListResponse {
   results: User[];
   count: number;
   next?: string;
   previous?: string;
-}
-
-export interface UserFilters {
-  search?: string;
-  role?: string;
-  is_active?: boolean;
-  is_deleted?: boolean;
-  created_after?: string;
-  created_before?: string;
-  ordering?: string;
 }
 
 export interface AuditLog {
