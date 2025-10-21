@@ -1,4 +1,4 @@
-# LCREE Benutzer-Bereinigung und Neuerstellung
+# User Management System - Benutzer-Bereinigung und Neuerstellung
 
 ## Problem
 Die Datenbank enthält noch Benutzer mit den alten Rollen-Namen (`PRODUCTION`, `WAREHOUSE`, `SALES`, `VIEWER`), die nicht mehr unterstützt werden.
@@ -28,11 +28,11 @@ python manage.py cleanup_and_create_users
 
 | E-Mail | Rolle | Passwort | Beschreibung |
 |--------|-------|-----------|--------------|
-| superadmin@lcree.de | SUPER_ADMIN | superadmin123 | Super-Administrator (höchste Berechtigung) |
-| admin@lcree.de | ADMIN | admin123 | Administrator (Systemverwaltung) |
-| manager@lcree.de | MANAGER | manager123 | Manager (Team-/Projektverwaltung) |
-| user@lcree.de | USER | user123 | Standard-Benutzer (grundlegende Funktionen) |
-| guest@lcree.de | GUEST | guest123 | Gast (nur Lesezugriff) |
+| superadmin@usermanagement.local | SUPER_ADMIN | superadmin123 | Super-Administrator (höchste Berechtigung) |
+| admin@usermanagement.local | ADMIN | admin123 | Administrator (Systemverwaltung) |
+| manager@usermanagement.local | MANAGER | manager123 | Manager (Team-/Projektverwaltung) |
+| user@usermanagement.local | USER | user123 | Standard-Benutzer (grundlegende Funktionen) |
+| guest@usermanagement.local | GUEST | guest123 | Gast (nur Lesezugriff) |
 
 ## Rollen-Übersicht
 

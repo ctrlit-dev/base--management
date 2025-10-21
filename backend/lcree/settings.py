@@ -1,13 +1,13 @@
 """
-LCREE Backend Settings
-======================
+User Management Backend Settings
+===============================
 
-Konfiguration für das LCREE Django-Backend mit allen erforderlichen Einstellungen
-für Produktion, Authentifizierung, Datenbank und externe Services.
+Konfiguration für das User Management Django-Backend mit allen erforderlichen Einstellungen
+für Benutzerverwaltung, Authentifizierung, Datenbank und externe Services.
 
 Wichtige Features:
 - Umgebungsvariablen über django-environ
-- PostgreSQL als Hauptdatenbank
+- SQLite als Hauptdatenbank (Development)
 - Passkeys/WebAuthn + JWT Fallback
 - CORS für Frontend-Integration
 - OpenAPI Dokumentation
@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Environment Variables Setup
 env = environ.Env(
     # Database
-    DATABASE_URL=(str, 'postgresql://lcree:lcree123@localhost:5432/lcree'),
+    DATABASE_URL=(str, 'sqlite:///db.sqlite3'),
     
     # Security
     SECRET_KEY=(str, 'django-insecure-change-me-in-production'),
@@ -42,7 +42,7 @@ env = environ.Env(
     
     # Passkeys/WebAuthn
     WEBAUTHN_RP_ID=(str, 'localhost'),
-    WEBAUTHN_RP_NAME=(str, 'User Management Backend'),
+    WEBAUTHN_RP_NAME=(str, 'User Management System'),
     WEBAUTHN_ORIGIN=(str, 'http://localhost:8000'),
     
     
@@ -279,7 +279,7 @@ else:
 
 # OpenAPI/Spectacular Settings
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'User Management Backend API',
+    'TITLE': 'User Management System API',
     'DESCRIPTION': 'Vollständiges Backend für das User Management System',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
@@ -306,7 +306,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': str(BASE_DIR / 'logs' / 'lcree.log'),
+            'filename': str(BASE_DIR / 'logs' / 'usermanagement.log'),
             'formatter': 'verbose',
         },
         'console': {
@@ -325,7 +325,7 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
-        'lcree': {
+        'usermanagement': {
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': False,
@@ -336,7 +336,7 @@ LOGGING = {
 # Session Configuration
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_AGE = 1209600  # 2 Wochen
-SESSION_COOKIE_NAME = 'lcree_sessionid'
+SESSION_COOKIE_NAME = 'usermanagement_sessionid'
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Lax'
 SESSION_SAVE_EVERY_REQUEST = True
